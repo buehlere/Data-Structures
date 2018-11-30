@@ -1,0 +1,127 @@
+template <typename T> //declaring template type T
+bool addAll(List<T> otherList)
+/*
+Summary: adds the elements of Otherlist to the end of a list.
+* ---------------------
+Input:
+-otherList: a list that will be added to the end of another
+Output:
+-True: If the list has changed.
+-False: If the list hasn't changed.
+*/
+{
+  //empty case
+  ListNode<NODETYPE>* OtherCurrentPtr = otherList.firstPtr;
+  ListNode<NODETYPE>* currentPtr = firstPtr;
+  //bool flag = true;
+  if(isEmpty())
+  {
+    while(OtherCurrentPtr != nullptr)
+    {
+      insertAtBack(OtherCurrentPtr->data);
+      //std::cout << OtherCurrentPtr->data << "\n";
+      OtherCurrentPtr = OtherCurrentPtr->nextPtr;
+    }
+  }  return true;  //else
+  // {
+  //   while(OtherCurrentPtr != nullptr)
+  //   {
+  //     flag == true;
+  //     while(currentPtr->nextPtr != nullptr && flag == true)
+  //     {
+  //       if(currentPtr->data != OtherCurrentPtr->data)
+  //       {
+  //         currentPtr = currentPtr->nextPtr;
+  //       }  else
+  //       {
+  //          flag = false;
+  //       }
+  //     }
+  //     if(flag == true)
+  //     {
+  //       insertAtBack(OtherCurrentPtr->data);
+  //     }
+  //     OtherCurrentPtr = OtherCurrentPtr->nextPtr;
+  //   }
+  // }
+}
+
+
+
+
+
+
+
+
+else
+{
+  if(currentPtr->data == OtherCurrentPtr->data)
+  {
+    ListNode<NODETYPE>* temp = currentPtr;
+    currentPtr = currentPtr->nextPtr;
+    delete temp;
+  }
+    while(OtherCurrentPtr != nullptr)
+    {
+      while(currentPtr->nextPtr != nullptr)
+      {
+        if(currentPtr->nextPtr->data == OtherCurrentPtr->nextPtr->data)
+        {
+          ListNode<NODETYPE>* temp = currentPtr->nextPtr;
+          currentPtr->nextPtr = currentPtr->nextPtr->nextPtr;
+          delete temp;
+        }
+        currentPtr = currentPtr->nextPtr;
+      }
+      OtherCurrentPtr = OtherCurrentPtr->nextPtr;
+    }
+  return true;
+}
+
+
+
+
+
+
+template <typename T> //declaring template type T
+bool removeAll(List<T>& otherList)
+ /*
+ Summary: Removes all the elements in otherList from this list
+ * ---------------------
+ Input:
+ -otherList: a list whose elements will be removed from this list
+ Output:
+ -True: If the list has changed.
+ -False: If the list hasn't changed.
+ */
+ {
+   //empty case
+   ListNode<NODETYPE>* OtherCurrentPtr = otherList.firstPtr;
+   ListNode<NODETYPE>* currentPtr = firstPtr;
+   ListNode<NODETYPE>* temp = nullptr;
+   if(otherList.isEmpty() || isEmpty())
+   {
+     return false;
+   } else
+   {
+     while(OtherCurrentPtr != nullptr)
+     {
+       while(currentPtr->nextPtr != nullptr)
+       {
+         if(currentPtr->nextPtr->data == OtherCurrentPtr->nextPtr->data)
+         {
+
+             ListNode<NODETYPE>* temp = currentPtr->nextPtr;
+             currentPtr->nextPtr = currentPtr->nextPtr->nextPtr;
+             delete temp;
+         } else
+         {
+           currentPtr = currentPtr->nextPtr;
+         }
+
+       }
+       OtherCurrentPtr = OtherCurrentPtr->nextPtr;
+     }
+     return true;
+   }
+}
